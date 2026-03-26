@@ -55,7 +55,7 @@ async function fetchTrustpilotData(domain, originalHostname) {
     renderUI(data, domain);
 
   } catch (e) {
-    loadingEl.innerHTML = `No profile for <b>${domain}</b>.`;
+    loadingEl.textContent = `No profile for: ${domain}.`;
     if (domain !== originalHostname) {
       const retryBtn = document.createElement('button');
       retryBtn.textContent = `Try specific: ${originalHostname}`;
