@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="33.039043mm"
+   height="31.421999mm"
+   viewBox="0 0 33.039043 31.421999"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="5.8810095"
+     inkscape:cx="61.043942"
+     inkscape:cy="69.120786"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-29.903349,-33.884626)">
+    <path
+       sodipodi:type="star"
+       style="fill:#04da8d;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-dasharray:none"
+       id="path5"
+       inkscape:flatsided="false"
+       sodipodi:sides="5"
+       sodipodi:cx="21.145039"
+       sodipodi:cy="37.251259"
+       sodipodi:r1="17.369654"
+       sodipodi:r2="6.634665"
+       sodipodi:arg1="-1.5707963"
+       sodipodi:arg2="-0.9424778"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 21.145039,19.881605 3.899758,12.002097 12.619764,3.9e-5 -10.209581,7.417742 3.899685,12.002121 -10.209626,-7.41768 -10.209627,7.41768 L 14.835097,39.301483 4.6255164,31.88374 17.24528,31.883702 Z"
+       inkscape:transform-center-y="-1.658636"
+       transform="translate(25.277833,14.003021)" />
+  </g>
+</svg>

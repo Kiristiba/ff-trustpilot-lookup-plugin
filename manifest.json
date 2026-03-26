@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Trustpilot Lookup",
+  "version": "1.0",
+  "description": "Check a site's Trustpilot rating on demand in Firefox or Chromium based browsers.",
+  "permissions": ["activeTab", "storage", "tabs"],
+  "host_permissions": ["https://*.trustpilot.com/*"],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Check Trustpilot Rating",
+    "default_icon": {
+      "16": "src/icon/icon16.png",
+      "32": "src/icon/icon32.png",
+      "48": "src/icon/icon48.png",
+      "128": "src/icon/icon128.png"
+    }
+  },
+  "background": {
+    "scripts": ["src/background.js"],
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "options_ui": {
+    "page": "src/options.html",
+    "open_in_tab": false
+  },
+  "icons": {
+    "16": "src/icon/icon16.png",
+    "32": "src/icon/icon32.png",
+    "48": "src/icon/icon48.png",
+    "128": "src/icon/icon128.png"
+  }
+}

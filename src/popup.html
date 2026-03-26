@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      width: 220px;
+      font-family: sans-serif;
+      padding: 10px;
+      margin: 0;
+    }
+
+    .stars {
+      color: #00b67a;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: block;
+      width: calc(100% - 16px);
+      padding: 8px;
+      text-align: center;
+      background: #00b67a;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    #loading {
+      font-size: 13px;
+      color: #333;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading">Scanning Trustpilot...</div>
+  <div id="content" class="hidden">
+    <h2 id="business-name" style="margin: 0 0 2px 0; font-size: 18px; color: #333;"></h2>
+    <div id="domain-name" style="font-size: 12px; color: #888; margin-bottom: 12px; font-weight: normal;"></div>
+    <div class="stars" id="rating-val">--</div>
+    <div class="meta" id="review-count">-- reviews</div>
+    <a id="tp-link" href="#" target="_blank" class="btn">View on Trustpilot</a>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+
+</html>
