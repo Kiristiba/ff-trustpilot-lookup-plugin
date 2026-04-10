@@ -1,4 +1,4 @@
-import { getBaseDomain, CACHE_TTL, updateBadge, getRatingColor } from './utils.js';
+import { getBaseDomain, updateBadge, getRatingColor, DEFAULT_CACHE_TTL_HOURS } from './utils.js';
 
 let currentTabId = null;
 
@@ -12,13 +12,19 @@ async function init() {
   fetchTrustpilotData(baseDomain, url.hostname);
 }
 
+async function getCacheTtl() {
+  const settings = await chrome.storage.local.get({ cacheTtlHours: DEFAULT_CACHE_TTL_HOURS });
+  return settings.cacheTtlHours * 60 * 60 * 1000;
+}
+
 async function fetchTrustpilotData(domain, originalHostname) {
   const loadingEl = document.getElementById('loading');
   loadingEl.textContent = `Checking ${domain}...`;
 
   // 1. Check Cache
   const cache = await chrome.storage.local.get(domain);
-  if (cache[domain] && (Date.now() - cache[domain].timestamp < CACHE_TTL)) {
+  const cacheTtl = await getCacheTtl();
+  if (cache[domain] && (Date.now() - cache[domain].timestamp < cacheTtl)) {
     const cachedData = cache[domain].data;
     updateBadge(cachedData.score.toString(), currentTabId);
     renderUI(cachedData, domain);

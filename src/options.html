@@ -1,7 +1,14 @@
 <body>
+  <style>
+    body { padding: 10px; margin: 0; font-family: sans-serif; }
+    select { display: block; width: 100%; margin-bottom: 10px; }
+    h3 { margin: 0 0 5px 0; font-size: 14px; }
+    label { font-size: 12px; color: #666; display: block; margin-bottom: 2px; }
+    .settings-row { margin-top: 15px; }
+  </style>
   <h3>Trustpilot Region</h3>
   <label for="locale">Select Trustpilot Region:</label>
-  <select id="locale">
+  <select id="locale" size="5">
     <optgroup label="Global & North America">
       <option value="www.trustpilot.com">Global / USA (.com)</option>
       <option value="ca.trustpilot.com">Canada (.ca)</option>
@@ -36,6 +43,17 @@
       <option value="br.trustpilot.com">Brazil (.br)</option>
     </optgroup>
   </select>
+
+  <h3>Cache Settings</h3>
+  <label for="cacheTtl">Cache Duration:</label>
+  <select id="cacheTtl" size="5">
+    <option value="1">1 hour</option>
+    <option value="8">8 hours</option>
+    <option value="24">1 day</option>
+    <option value="168">7 days</option>
+    <option value="336">14 days</option>
+  </select>
+
   <div class="settings-row">
     <button id="save">Save Settings</button>
     <span id="status"

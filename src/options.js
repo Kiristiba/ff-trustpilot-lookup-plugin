@@ -1,6 +1,7 @@
-import { updateBadge } from './utils.js';
+import { updateBadge, DEFAULT_CACHE_TTL_HOURS } from './utils.js';
 
-const select = document.getElementById('locale');
+const localeSelect = document.getElementById('locale');
+const cacheTtlSelect = document.getElementById('cacheTtl');
 const saveBtn = document.getElementById('save');
 const statusMsg = document.getElementById('status');
 
@@ -15,24 +16,35 @@ function showStatus(text) {
   }, 2000);
 }
 
-// Load current setting
-chrome.storage.local.get({ locale: 'www.trustpilot.com' }, (res) => {
-  select.value = res.locale;
+// Load current settings
+chrome.storage.local.get({ 
+  locale: 'www.trustpilot.com', 
+  cacheTtlHours: DEFAULT_CACHE_TTL_HOURS 
+}, (res) => {
+  localeSelect.value = res.locale;
+  cacheTtlSelect.value = res.cacheTtlHours.toString();
 });
 
 saveBtn.onclick = async () => {
-  const newLocale = select.value;
+  const newLocale = localeSelect.value;
+  const newCacheTtlHours = parseInt(cacheTtlSelect.value, 10);
 
-  // 1. Clear everything
-  await chrome.storage.local.clear();
+  const current = await chrome.storage.local.get(['locale', 'cacheTtlHours']);
+  const localeChanged = current.locale !== newLocale;
 
-  // 2. Set new locale
-  await chrome.storage.local.set({ locale: newLocale });
+  if (localeChanged) {
+    await chrome.storage.local.clear();
+    await chrome.storage.local.set({
+      locale: newLocale,
+      cacheTtlHours: newCacheTtlHours
+    });
 
-  // 3. Reset badge on the current options tab
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (tab) updateBadge(null, tab.id);
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (tab) updateBadge(null, tab.id);
 
-  // 4. Show the visual "Checkmark" or message
-  showStatus('Saved & Cache Cleared ✓');
+    showStatus('Saved & Cache Cleared ✓');
+  } else {
+    await chrome.storage.local.set({ cacheTtlHours: newCacheTtlHours });
+    showStatus('Settings saved ✓');
+  }
 };

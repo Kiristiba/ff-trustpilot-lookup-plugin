@@ -1,4 +1,5 @@
-export const CACHE_TTL = 1000 * 60 * 60 * 24 * 7; // 1 week
+export const DEFAULT_CACHE_TTL_HOURS = 168; // 7 Days
+export const CACHE_TTL = 1000 * 60 * 60 * DEFAULT_CACHE_TTL_HOURS;
 
 const RATING_COLORS = {
   5: "#00b67a",
