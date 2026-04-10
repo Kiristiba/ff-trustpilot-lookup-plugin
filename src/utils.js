@@ -1,5 +1,15 @@
 export const DEFAULT_CACHE_TTL_HOURS = 168; // 7 Days
 export const CACHE_TTL = 1000 * 60 * 60 * DEFAULT_CACHE_TTL_HOURS;
+export const SETTING_KEYS = ['locale', 'cacheTtlHours'];
+
+export async function clearCache() {
+  const allData = await chrome.storage.local.get(null);
+  const cacheKeys = Object.keys(allData).filter(key => !SETTING_KEYS.includes(key));
+  
+  if (cacheKeys.length > 0) {
+    await chrome.storage.local.remove(cacheKeys);
+  }
+}
 
 const RATING_COLORS = {
   5: "#00b67a",

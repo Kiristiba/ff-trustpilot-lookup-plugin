@@ -1,4 +1,4 @@
-import { updateBadge, DEFAULT_CACHE_TTL_HOURS } from './utils.js';
+import { updateBadge, DEFAULT_CACHE_TTL_HOURS, clearCache } from './utils.js';
 
 const localeSelect = document.getElementById('locale');
 const cacheTtlSelect = document.getElementById('cacheTtl');
@@ -33,7 +33,7 @@ saveBtn.onclick = async () => {
   const localeChanged = current.locale !== newLocale;
 
   if (localeChanged) {
-    await chrome.storage.local.clear();
+    await clearCache();
     await chrome.storage.local.set({
       locale: newLocale,
       cacheTtlHours: newCacheTtlHours

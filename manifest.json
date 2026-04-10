@@ -3,7 +3,7 @@
   "name": "Trustpilot Lookup",
   "version": "1.0",
   "description": "Check a site's Trustpilot rating on demand in Firefox or Chromium based browsers.",
-  "permissions": ["activeTab", "storage", "tabs"],
+  "permissions": ["activeTab", "storage", "tabs", "contextMenus"],
   "host_permissions": ["https://*.trustpilot.com/*"],
   "browser_specific_settings": {
     "gecko": {

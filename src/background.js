@@ -1,4 +1,4 @@
-import { getBaseDomain, updateBadge, DEFAULT_CACHE_TTL_HOURS } from './utils.js';
+import { getBaseDomain, updateBadge, DEFAULT_CACHE_TTL_HOURS, clearCache } from './utils.js';
 
 async function getCacheTtl() {
   const settings = await chrome.storage.local.get({ cacheTtlHours: DEFAULT_CACHE_TTL_HOURS });
@@ -20,10 +20,27 @@ async function checkCacheAndSetBadge(tabId, urlString) {
   if (cache[domain] && (Date.now() - cache[domain].timestamp < cacheTtl)) {
     updateBadge(cache[domain].data.score.toString(), tabId);
   } else {
-    // If not in cache, keep the icon clean (Privacy!)
     updateBadge("", tabId);
   }
 }
+
+async function handleClearCache() {
+  await clearCache();
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (tab?.id) updateBadge("", tab.id);
+}
+
+chrome.contextMenus.create({
+  id: 'clear-cache',
+  title: 'Clear Cache',
+  contexts: ['action']
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === 'clear-cache') {
+    handleClearCache();
+  }
+});
 
 // Listen for tab switching
 chrome.tabs.onActivated.addListener((activeInfo) => {
