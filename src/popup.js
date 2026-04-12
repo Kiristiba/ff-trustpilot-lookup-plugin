@@ -1,8 +1,43 @@
 import { getBaseDomain, updateBadge, getRatingColor, DEFAULT_CACHE_TTL_HOURS } from './utils.js';
 
+const TRUSTPILOT_ORIGIN = 'https://*.trustpilot.com/*';
+
 let currentTabId = null;
 
+async function checkPermission() {
+  return await chrome.permissions.contains({ origins: [TRUSTPILOT_ORIGIN] });
+}
+
+async function requestPermission() {
+  return await chrome.permissions.request({ origins: [TRUSTPILOT_ORIGIN] });
+}
+
+function showPermissionPrompt() {
+  const loadingEl = document.getElementById('loading');
+  loadingEl.textContent = 'Missing permissions. This extension requires permission to read data from trustpilot.com. Click the button below to request permissions.';
+
+  const btn = document.createElement('button');
+  btn.textContent = 'Grant Permission';
+  btn.className = 'btn';
+  btn.style.marginTop = '10px';
+  btn.onclick = async () => {
+    const granted = await requestPermission();
+    if (granted) {
+      window.location.reload();
+    } else {
+      loadingEl.textContent = 'Permission denied';
+    }
+  };
+  loadingEl.appendChild(btn);
+}
+
 async function init() {
+  const hasPermission = await checkPermission();
+  if (!hasPermission) {
+    showPermissionPrompt();
+    return;
+  }
+
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   currentTabId = tab.id;
 
