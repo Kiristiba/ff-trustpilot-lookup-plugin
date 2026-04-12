@@ -3,7 +3,7 @@
 A privacy-first, lightweight browser extension that displays Trustpilot scores directly in your toolbar. Get instant reputation insights without being tracked.
 
 ![License](https://img.shields.io/badge/license-GPLv3-blue.svg)
-![Version](https://img.shields.io/badge/version-1.1.0-green.svg)
+![Version](https://img.shields.io/badge/version-1.2.0-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Firefox-lightgrey)
 
 ## ✨ Features
