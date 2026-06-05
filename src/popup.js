@@ -67,8 +67,8 @@ async function fetchTrustpilotData(domain, originalHostname) {
   }
 
   // 2. Fetch Live Data
-  const settings = await chrome.storage.local.get({ locale: 'www.trustpilot.com' });
-  const tpUrl = `https://${settings.locale}/review/${domain}`;
+  //const settings = await chrome.storage.local.get({ locale: 'www.trustpilot.com' });
+  const tpUrl = `https://www.trustpilot.com/review/${domain}`;
 
   try {
     const response = await fetch(tpUrl);
