@@ -10,7 +10,7 @@ A privacy-first, lightweight browser extension that displays Trustpilot scores d
 
 - **Privacy-First:** Unlike other extensions, this does not track your every move. It only fetches data when you actually click the extension icon.
 - **Local Caching:** Scores are cached locally for 7 days to reduce network requests and increase speed.
-- **Region Support:** Choose your preferred Trustpilot locale (e.g., .com, .it, .de) in the settings.
+- **Region Support:** Disabled due to a bug making it completely unusable in Firefox
 
 ## 🚀 Installation (Development Mode)
 
